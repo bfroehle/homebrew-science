@@ -2,8 +2,8 @@ require 'formula'
 
 class SuiteSparse < Formula
   homepage 'http://www.cise.ufl.edu/research/sparse/SuiteSparse'
-  url 'http://www.cise.ufl.edu/research/sparse/SuiteSparse/SuiteSparse-4.2.0.tar.gz'
-  sha1 'd99f88afc69ee4d073541ff7a68bc4f26bda5853'
+  url 'http://www.cise.ufl.edu/research/sparse/SuiteSparse/SuiteSparse-4.2.1.tar.gz'
+  sha1 'ea6688bd6f6adf81e2e5aacdc71d7dcf9a5d208d'
 
   depends_on "tbb" => :recommended
   depends_on "openblas" => :optional
@@ -18,7 +18,7 @@ class SuiteSparse < Formula
     # Switch to the Mac base config, per SuiteSparse README.txt
     system "mv SuiteSparse_config/SuiteSparse_config.mk SuiteSparse_config/SuiteSparse_config_orig.mk"
     system "mv SuiteSparse_config/SuiteSparse_config_Mac.mk SuiteSparse_config/SuiteSparse_config.mk"
-    
+
     inreplace "SuiteSparse_config/SuiteSparse_config.mk" do |s|
       if build.include? 'with-openblas'
         s.change_make_var! "BLAS", "-lopenblas"
